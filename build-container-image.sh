@@ -1,2 +1,1 @@
-./mvnw clean package
-docker build -t petclinic-jdbc-jarexe .
+./mvnw -DskipTests spring-boot:build-image
