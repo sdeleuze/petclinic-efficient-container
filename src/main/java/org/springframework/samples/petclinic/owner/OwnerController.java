@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.samples.petclinic.visit.Visit;
