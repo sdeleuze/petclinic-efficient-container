@@ -7,6 +7,8 @@ services:
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d/
   petclinic:
     image: petclinic-jdbc-unpacked
     ports:
