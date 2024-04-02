@@ -10,7 +10,7 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d/
   petclinic:
-    image: petclinic-jdbc-unpacked
+    image: petclinic-jdbc-cds
     ports:
       - "8080:8080"
     deploy:
