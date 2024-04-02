@@ -14,6 +14,7 @@
 	<name>petclinic-jdbc</name>
 	<properties>
 		<java.version>21</java.version>
+		<spring-framework.version>6.2.0-M1</spring-framework.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,9 +51,15 @@
 			<version>3.0.2</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- When https://github.com/spring-projects/spring-boot/issues/40146 is fixed, we can remove this webjars-locator-core dependency.  -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator-lite</artifactId>
+			<version>0.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -107,6 +114,14 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -117,6 +132,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
 	</pluginRepositories>
+
 
 </project>
