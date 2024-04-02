@@ -106,6 +106,7 @@
 					<image>
 						<env>
 							<BP_SPRING_AOT_ENABLED>true</BP_SPRING_AOT_ENABLED>
+							<BP_JVM_CDS_ENABLED>true</BP_JVM_CDS_ENABLED>
 						</env>
 						<buildpacks>
 							<buildpack>paketobuildpacks/java</buildpack>
