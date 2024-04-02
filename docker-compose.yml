@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:14.2
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=petclinic
+      - POSTGRES_USER=petclinic
+      - POSTGRES_DB=petclinic
+  petclinic:
+    image: petclinic-jdbc-jarexe
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1024M
