@@ -1,2 +1,2 @@
 ./mvnw clean package
-docker build -t petclinic-jdbc-cds .
+docker build -t petclinic-jdbc-premain .
