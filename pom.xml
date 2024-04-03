@@ -109,6 +109,17 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+                    <image>
+                        <buildpacks>
+                            <buildpack>anthonydahanne/java:cds-april-2</buildpack>
+                        </buildpacks>
+                        <builder>paketobuildpacks/builder-jammy-buildpackless-tiny</builder>
+                        <env>
+                            <BP_JVM_CDS_ENABLED>true</BP_JVM_CDS_ENABLED>
+                        </env>
+                    </image>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
