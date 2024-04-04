@@ -112,7 +112,7 @@
 				<configuration>
                     <image>
                         <buildpacks>
-                            <buildpack>anthonydahanne/java:cds-april-2</buildpack>
+                            <buildpack>anthonydahanne/java:cds-april-4</buildpack>
                         </buildpacks>
                         <builder>paketobuildpacks/builder-jammy-buildpackless-tiny</builder>
                         <env>
