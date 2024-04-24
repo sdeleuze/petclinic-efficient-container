@@ -13,8 +13,8 @@ services:
     image: petclinic-jdbc:1.0.0-SNAPSHOT
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '2.0'
-          memory: 1024M
+      #    deploy:
+      #      resources:
+      #        limits:
+      #   cpus: '2.0'
+      #   memory: 1024M
