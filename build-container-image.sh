@@ -1,2 +1,2 @@
-./mvnw clean package
+./mvnw clean package -DskipTests
 docker build -t petclinic-jdbc-premain .

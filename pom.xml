@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0-M3</version>
+		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.springframework.experimental</groupId>
@@ -14,7 +14,7 @@
 	<name>petclinic-jdbc</name>
 	<properties>
 		<java.version>21</java.version>
-		<spring-framework.version>6.2.0-SNAPSHOT</spring-framework.version>
+		<spring-framework.version>6.2.0-M3</spring-framework.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-lite</artifactId>
-			<version>0.0.3</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -122,14 +122,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -140,15 +132,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</pluginRepository>
 	</pluginRepositories>
-
 
 </project>

@@ -13,8 +13,4 @@ services:
     image: petclinic-jdbc-premain
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '2.0'
-          memory: 1024M
+
