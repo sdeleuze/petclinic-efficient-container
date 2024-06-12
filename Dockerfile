@@ -18,18 +18,25 @@ RUN cd /opt && \
     git clone -b premain --depth 1 https://github.com/openjdk/leyden.git
 
 RUN cd /opt/leyden && \
-	bash configure --with-boot-jdk=/opt/boot-jdk && \
+	bash configure --with-native-debug-symbols=none --with-boot-jdk=/opt/boot-jdk && \
 	make images && \
 	mv /opt/leyden/build/linux-$(uname -m)-server-release/images/jdk /opt
 
-FROM ubuntu:focal
-RUN mkdir -p /opt/leyden/test/hotspot/jtreg/premain
-COPY --from=0 /opt/jdk /opt/jdk
 ENV JAVA_HOME /opt/jdk
 ENV PATH $JAVA_HOME/bin:$PATH
 
 COPY target/petclinic-jdbc-1.0.0-SNAPSHOT.jar petclinic-jdbc-1.0.0-SNAPSHOT.jar
-RUN java -Djarmode=tools -jar /petclinic-jdbc-1.0.0-SNAPSHOT.jar extract
-RUN rm /petclinic-jdbc-1.0.0-SNAPSHOT.jar
-RUN java -XX:CacheDataStore=/application.cds -XX:CachedCodeMaxSize=512M -Dspring.aot.enabled=true -Dspring.context.exit=onRefresh -jar /petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar
+RUN java -Djarmode=tools -jar /petclinic-jdbc-1.0.0-SNAPSHOT.jar extract && \
+    rm /opt/jdk/lib/server/classes.jsa && \
+    rm /opt/jdk/lib/server/classes_nocoops.jsa && \
+    rm -rf /opt/jdk/demo && \
+    rm -rf /opt/jdk/jmods
+
+FROM ubuntu:focal
+COPY --from=0 /opt/jdk /opt/jdk
+COPY --from=0 /petclinic-jdbc-1.0.0-SNAPSHOT /petclinic-jdbc-1.0.0-SNAPSHOT
+ENV JAVA_HOME /opt/jdk
+ENV PATH $JAVA_HOME/bin:$PATH
+
+RUN java -XX:CacheDataStore=/application.cds -Dspring.aot.enabled=true -Dspring.context.exit=onRefresh -jar /petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar
 ENTRYPOINT ["java","-Dspring.aot.enabled=true","-XX:CacheDataStore=/application.cds","-jar","/petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar"]
