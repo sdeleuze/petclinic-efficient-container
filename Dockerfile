@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:noble
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
@@ -32,7 +32,7 @@ RUN java -Djarmode=tools -jar /petclinic-jdbc-1.0.0-SNAPSHOT.jar extract && \
     rm -rf /opt/jdk/demo && \
     rm -rf /opt/jdk/jmods
 
-FROM ubuntu:focal
+FROM ubuntu:noble
 COPY --from=0 /opt/jdk /opt/jdk
 COPY --from=0 /petclinic-jdbc-1.0.0-SNAPSHOT /petclinic-jdbc-1.0.0-SNAPSHOT
 ENV JAVA_HOME /opt/jdk
