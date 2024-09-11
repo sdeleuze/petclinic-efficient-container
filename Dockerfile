@@ -38,5 +38,4 @@ COPY --from=0 /petclinic-jdbc-1.0.0-SNAPSHOT /petclinic-jdbc-1.0.0-SNAPSHOT
 ENV JAVA_HOME /opt/jdk
 ENV PATH $JAVA_HOME/bin:$PATH
 
-RUN java -XX:CacheDataStore=/application.cds -Dspring.aot.enabled=true -Dspring.context.exit=onRefresh -jar /petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar
-ENTRYPOINT ["java","-Dspring.aot.enabled=true","-XX:CacheDataStore=/application.cds","-jar","/petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Dspring.aot.enabled=true","-XX:CacheDataStore=/tmp/application.cds","-jar","/petclinic-jdbc-1.0.0-SNAPSHOT/petclinic-jdbc-1.0.0-SNAPSHOT.jar"]
