@@ -11,6 +11,8 @@ services:
       - ./sql:/docker-entrypoint-initdb.d/
   petclinic:
     image: petclinic-jdbc-premain
+    volumes:
+      - /Users/sdeleuze/workspace/petclinic-efficient-container/cache:/cache
     ports:
       - "8080:8080"
 
