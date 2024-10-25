@@ -5,8 +5,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends tzdata ca-certificates git curl build-essential libfreetype6-dev libfontconfig-dev libcups2-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libasound2-dev libffi-dev autoconf file unzip zip nano
 
 RUN case $(uname -m) in \
-        aarch64)   export BOOT_JDK_URL="https://download.bell-sw.com/java/22+37/bellsoft-jdk22+37-linux-aarch64.tar.gz" ;; \
-        *)       export BOOT_JDK_URL="https://download.bell-sw.com/java/22+37/bellsoft-jdk22+37-linux-amd64.tar.gz" ;; \
+        aarch64)   export BOOT_JDK_URL="https://download.bell-sw.com/java/23.0.1+13/bellsoft-jdk23.0.1+13-linux-aarch64.tar.gz" ;; \
+        *)       export BOOT_JDK_URL="https://download.bell-sw.com/java/23.0.1+13/bellsoft-jdk23.0.1+13-linux-amd64.tar.gz" ;; \
     esac && \
     mkdir -p /opt/boot-jdk && \
     cd /opt/boot-jdk && \
@@ -27,8 +27,6 @@ ENV PATH $JAVA_HOME/bin:$PATH
 
 COPY target/petclinic-jdbc-1.0.0-SNAPSHOT.jar petclinic-jdbc-1.0.0-SNAPSHOT.jar
 RUN java -Djarmode=tools -jar /petclinic-jdbc-1.0.0-SNAPSHOT.jar extract && \
-    rm /opt/jdk/lib/server/classes.jsa && \
-    rm /opt/jdk/lib/server/classes_nocoops.jsa && \
     rm -rf /opt/jdk/demo && \
     rm -rf /opt/jdk/jmods
 
